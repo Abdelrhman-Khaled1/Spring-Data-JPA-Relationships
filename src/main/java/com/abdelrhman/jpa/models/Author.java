@@ -2,26 +2,21 @@ package com.abdelrhman.jpa.models;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-@Table(
-//        name = "author_table"
-)
 public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(
-            name = "first_name",
-            length = 35
-    )
     private String firstName;
     private String lastName;
     @Column(
@@ -30,17 +25,4 @@ public class Author {
     )
     private String email;
     private int age;
-
-    @Column(
-            updatable = false,
-            nullable = false
-    )
-    private LocalDateTime createdAt;
-
-    @Column(
-            insertable = false,
-            updatable = true
-    )
-    private LocalDateTime lastModified;
-
 }
